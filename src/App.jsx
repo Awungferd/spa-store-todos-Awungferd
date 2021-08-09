@@ -1,13 +1,22 @@
 import { useState } from 'react';
+import React from 'react';
 import './App.css';
 import Login from './components/Login';
 import TodoList from './components/TodoList';
 
-function App() {
-  const [user, setUser] = useState(null);
 
+export const baseUserContext={
+    user: null,
+    setUser:()=>{}
+  }
+export const UserContext=React.createContext()
+export default function App() {
+  
+  const [user, setUser] = useState(null);
+const contextValue={user, setUser}
   return (
-    <div className="App">
+    <UserContext.Provider value={contextValue}>
+<div className="App">
       <h1>Codelicious TODO</h1>
 
       {user && <>
@@ -15,9 +24,9 @@ function App() {
         <hr/>
         <TodoList user={user} />
       </>}
-      {!user && <Login setUser={setUser} />}
+      {!user && <Login  />}
     </div>
+    </UserContext.Provider>
   );
 }
 
-export default App;

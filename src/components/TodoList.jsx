@@ -7,6 +7,7 @@ const defaultTodos = [
     { id: 58477, user: 1, text: "Wash dishes", done: false },
     { id: 64851, user: 1, text: "Bake a cake", done: false },
     { id: 59858, user: 2, text: "Make a website", done: true },
+    {id: 13342, user:3, text:"Eat a whale", done: true}
 ];
 
 // NOTE: TodoList doesn't even use "user", it just passes it
@@ -32,7 +33,7 @@ function TodoList({ user }) {
             <ul>
                 {todos.map(todo =>
                     <TodoListItem
-                        user={user}
+                       
                         key={todo.id}
                         todo={todo}
                         deleteTodo={deleteTodo}
